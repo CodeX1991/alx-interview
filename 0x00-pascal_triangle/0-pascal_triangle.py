@@ -3,6 +3,9 @@
 Pascal module
 """
 def pascal_triangle(n):
+    """
+    Pascal definition
+    """
     if n <= 0:
         return []
 
