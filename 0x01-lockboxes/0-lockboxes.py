@@ -11,7 +11,7 @@ def canUnlockAll(boxes):
     Attr:
         boxes -  a list of lists
     """
-    if not boxes:
+    if not boxes or type(boxes) is not list:
         return False
 
     n = len(boxes)
