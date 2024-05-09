@@ -11,7 +11,7 @@ def minOperations(n):
 
     Return: an integer
     """
-    if n == 1:
+    if n < 1:
         return 0
 
     # Initialize an array to store minimum operations
