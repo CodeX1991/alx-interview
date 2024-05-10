@@ -11,21 +11,20 @@ def minOperations(n):
 
     Return: an integer
     """
+    end_str = "H"
+    copy_str = ""
+    str_len = 1
+    oper_total = 0
+
     if n < 1:
         return 0
 
-    # Initialize an array to store minimum operations
-    # for each numbers of character
-    numOfOp = [float('inf')] * (n + 1)
-    numOfOp[1] = 0  # Base case: 1 'H' char needs 0 operations
+    while str_len < n:
+        if n % str_len == 0:
+            copy_str = end_str  # copy
+            oper_total += 1
+        end_str += copy_str  # paste
+        str_len = len(end_str)
+        oper_total += 1
 
-    for i in range(2, n + 1):
-        for j in range(1, i):
-            if i % j == 0:
-                # If i is divisible by j, it means we can copy
-                # j characters j times to reach i
-                numOfOp[i] = min(numOfOp[i], numOfOp[j] + i // j)
-
-            numOfOp[i] = min(numOfOp[i], numOfOp[j] + 1 + i // j)
-
-    return numOfOp[n]
+    return oper_total
