@@ -49,7 +49,7 @@ def print_solutions(solutions):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("usage: nqueens N")
+        print("Usage: nqueens N")
         sys.exit(1)
 
     try:
