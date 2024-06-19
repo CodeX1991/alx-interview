@@ -17,13 +17,21 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    # Initialize the mnc(minimum number of coin) array
-    # with inifinity for all values except mnc[0]
-    mnc = [float('inf')] * (total + 1)
-    mnc[0] = 0
+    # Sort coins in descending order
+    coins.sort(reverse=True)
+
+    count = 0
 
     for coin in coins:
-        for i in range(coin, total + 1):
-            mnc[i] = min(mnc[i], mnc[i - coin] + 1)
+        if total <= 0:
+            break
+        # Use as many coins of the current denomination as possible
+        while total >= coin:
+            total -= coin
+            count += 1
 
-    return mnc[total] if mnc[total] != float('inf') else -1
+    # If after using the coins we reach a total of 0, return the count
+    if total == 0:
+        return count
+    else:
+        return -1
